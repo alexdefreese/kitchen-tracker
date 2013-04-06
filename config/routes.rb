@@ -1,4 +1,14 @@
 KitchenTracker::Application.routes.draw do
+  get "kitchens/new"
+
+  get "kitchens/create"
+
+  get "kitchens/edit"
+
+  get "kitchens/update"
+
+  get "kitchens/destroy"
+
   devise_for :users
 
   # The priority is based upon order of creation:
