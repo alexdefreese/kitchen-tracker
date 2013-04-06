@@ -1,27 +1,7 @@
 KitchenTracker::Application.routes.draw do
-  get "foods/index"
 
-  get "foods/show"
-
-  get "foods/new"
-
-  get "foods/create"
-
-  get "foods/edit"
-
-  get "foods/update"
-
-  get "foods/destroy"
-
-  get "kitchens/new"
-
-  get "kitchens/create"
-
-  get "kitchens/edit"
-
-  get "kitchens/update"
-
-  get "kitchens/destroy"
+  resources_for :foods
+  resources_for :kitchens, only: [:new, :create, :edit, :update, :destroy]
 
   devise_for :users
 
