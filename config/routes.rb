@@ -1,7 +1,7 @@
 KitchenTracker::Application.routes.draw do
 
-  resources_for :foods
-  resources_for :kitchens, only: [:new, :create, :edit, :update, :destroy]
+  resources :foods
+  resources :kitchens, only: [:new, :create, :edit, :update, :destroy]
 
   devise_for :users
 
