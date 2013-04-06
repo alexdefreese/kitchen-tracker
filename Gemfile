@@ -28,7 +28,7 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'bootstrap-rails'
+gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 
