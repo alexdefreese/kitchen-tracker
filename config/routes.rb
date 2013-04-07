@@ -6,6 +6,8 @@ KitchenTracker::Application.routes.draw do
 
   resources :foods
   resources :kitchens, only: [:new, :create, :edit, :update, :destroy, :index, :show]
+  get "kitchens/subscribe_form/:id" => 'kitchens#subscribe_form'
+  post "kitchens/subscribe" => 'kitchens#subscribe'
 
   devise_for :users
 

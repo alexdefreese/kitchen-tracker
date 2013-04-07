@@ -4,4 +4,8 @@
     %li
       .kitchen-info
         = link_to k.name, k
-        = link_to "Subscribe", '#', class: 'btn btn-small btn-primary'
+        - if user_signed_in?
+          - if current_user.kitchens.include?(k)
+            = link_to "Unsubscribe", "/kitchens/unsubscribe/#{k.id}", class: 'btn btn-small btn-warning'
+          - else
+            = link_to "Subscribe", "/kitchens/subscribe_form/#{k.id}", class: 'btn btn-small btn-primary'

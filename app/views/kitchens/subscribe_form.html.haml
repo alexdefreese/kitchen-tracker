@@ -1,0 +1,5 @@
+= form_tag "/kitchens/subscribe" do
+  = label_tag "Authentication Code"
+  = text_field_tag :auth_code
+  = hidden_field_tag :id, @kitchen.id
+  = submit_tag "Subscribe", class: 'btn btn-large btn-primary'
