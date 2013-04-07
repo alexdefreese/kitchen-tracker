@@ -31,6 +31,7 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
+gem 'haml'
 
 gem 'devise'
 
