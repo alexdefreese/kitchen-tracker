@@ -5,7 +5,7 @@ KitchenTracker::Application.routes.draw do
   get "pages/help"
 
   resources :foods
-  resources :kitchens, only: [:new, :create, :edit, :update, :destroy]
+  resources :kitchens, only: [:new, :create, :edit, :update, :destroy, :index, :show]
 
   devise_for :users
 
