@@ -1,0 +1,10 @@
+%header
+  .navbar.navbar-inverse
+    .navbar-inner
+      = link_to "Kitchen Tracker", root_path, class: "logo"
+
+      %ul.nav
+        - if user_signed_in?
+          %li= link_to "Sign Out", signout_path
+        - else
+          %li= link_to "Sign in", signin_path
