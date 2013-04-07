@@ -1,5 +1,5 @@
 class KitchensController < ApplicationController
-  
+
   def new
     @kitchen = Kitchen.new()
   end
@@ -12,6 +12,10 @@ class KitchensController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @kitchen = Kitchen.find(params[:id])
   end
 
   def edit
