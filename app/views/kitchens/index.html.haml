@@ -1,0 +1,7 @@
+%h1 Kitchens
+%ul
+  - @kitchens.each do |k|
+    %li
+      .kitchen-info
+        = link_to k.name, k
+        = link_to "Subscribe", '#', class: 'btn btn-small btn-primary'
