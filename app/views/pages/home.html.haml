@@ -1,17 +1,19 @@
 %h1 Kitchen Tracker
 
 - if user_signed_in?
-  - if current_user.kitchens.empty?
-    .container
-      %h2 Add or Create a Kitchen
-      %span.buttons
-        = link_to "Create", new_kitchen_path, class: "btn btn-large btn-primary"
-        = link_to "Add", kitchens_path, class: 'btn btn-large btn-info'
-  - else
+
+  - if not current_user.kitchens.empty?
     .container
       %ul
         - current_user.kitchens.each do |kitchen|
           %li= link_to kitchen.name, kitchen
+  .container
+    %h2 Add or Create a Kitchen
+    %span.buttons
+      = link_to "Create", new_kitchen_path, class: "btn btn-large btn-primary"
+      = link_to "Add", kitchens_path, class: 'btn btn-large btn-info'
+
+
 - else
   .container
     %h2 What is this?

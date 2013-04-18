@@ -35,12 +35,19 @@ class KitchensController < ApplicationController
   end
 
   def create
-    @kitchen = Kitchen.new(params[:kitchen])
-    if @kitchen.save
-      flash[:success] = "Kitchen Created."
-      redirect_to root_path
+    if user_signed_in?
+      current_user.kitchens.build(params[:kitchen])
+      if current_user.save
+        flash[:success] = "Kitchen Created."
+        if current_user.primary_kitchen_id.nil?
+          current_user.primary_kitchen_id = current_user.kitchens[1].id
+        end
+        redirect_to root_path
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to root_path
     end
   end
 
