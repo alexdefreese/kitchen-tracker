@@ -11,7 +11,7 @@
                 %b.caret
               %ul.dropdown-menu{"role" => "menu", "aria-labelledby" => "dLabel"}
                 %li= link_to "Create Kitchen", new_kitchen_path
-                %li= link_to "Add Existing Kitchen", 
+                %li= link_to "Add Existing Kitchen", kitchens_path
                 %li.divider
                 - current_user.kitchens.each do |kit|
                   %li= link_to kit.name, kit
