@@ -5,6 +5,16 @@
       %nav
         %ul.nav.pull-right
           - if user_signed_in?
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", "href" => '#'}
+                Kitchens
+                %b.caret
+              %ul.dropdown-menu{"role" => "menu", "aria-labelledby" => "dLabel"}
+                %li= link_to "Create Kitchen", new_kitchen_path
+                %li= link_to "Add Existing Kitchen", 
+                %li.divider
+                - current_user.kitchens.each do |kit|
+                  %li= link_to kit.name, kit
             %li= link_to "Sign Out", destroy_user_session_path, method: :delete
           - else
             %li= link_to "Sign Up", '/users/sign_up'
