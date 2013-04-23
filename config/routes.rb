@@ -1,4 +1,4 @@
-8KitchenTracker::Application.routes.draw do
+KitchenTracker::Application.routes.draw do
 
   get "pages/home"
 
