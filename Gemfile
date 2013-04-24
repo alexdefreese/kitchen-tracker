@@ -7,14 +7,18 @@ gem 'rails', '3.2.13'
 
 
 gem 'rspec-rails', group: [:test, :development]
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rb-fsevent'
+  gem 'zeus'
 end
+
 group :test do 
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'guard-rspec'
+  gem 'database_cleaner'
 end
 
 group :production do

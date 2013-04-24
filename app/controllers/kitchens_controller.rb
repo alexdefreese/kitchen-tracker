@@ -1,5 +1,7 @@
 class KitchensController < ApplicationController
 
+  before_filter :require_authentication, only: [:index, :subscribe_form, :subscribe, :unsubscribe, :new, :create, :show, :update, :destroy]
+
   def index
     @kitchens = Kitchen.all
   end
@@ -35,19 +37,15 @@ class KitchensController < ApplicationController
   end
 
   def create
-    if user_signed_in?
-      current_user.kitchens.build(params[:kitchen])
-      if current_user.save
-        flash[:success] = "Kitchen Created."
-        if current_user.primary_kitchen_id.nil?
-          current_user.primary_kitchen_id = current_user.kitchens[1].id
-        end
-        redirect_to root_path
-      else
-        render :new
+    @kitchen = Kitchen.new(params[:kitchen])
+    if @kitchen.save
+      current_user.kitchens << @kitchen
+      if current_user.primary_kitchen_id.nil?
+        current_user.primary_kitchen_id = @kitchen.id
       end
+      redirect_to @kitchen, success: "Successfully created new kitchen."
     else
-      redirect_to root_path
+      render :new
     end
   end
 
@@ -68,4 +66,11 @@ class KitchensController < ApplicationController
     @kitchen = Kitchen.find(params[:id])
     @kitchen.destroy
   end
+
+  private
+    def require_authentication
+      if not user_signed_in?
+        redirect_to root_path
+      end
+    end
 end
