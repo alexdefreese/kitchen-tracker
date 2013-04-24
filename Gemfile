@@ -11,7 +11,6 @@ gem 'rspec-rails', group: [:test, :development]
 group :development, :test do
   gem 'sqlite3'
   gem 'rb-fsevent'
-  gem 'zeus'
 end
 
 group :test do 

@@ -1,6 +1,7 @@
 class KitchensController < ApplicationController
 
   before_filter :require_authentication, only: [:index, :subscribe_form, :subscribe, :unsubscribe, :new, :create, :show, :update, :destroy]
+  before_filter :user_subscribed, only: [:show, :edit, :update, :destroy]
 
   def index
     @kitchens = Kitchen.all
@@ -42,6 +43,7 @@ class KitchensController < ApplicationController
       current_user.kitchens << @kitchen
       if current_user.primary_kitchen_id.nil?
         current_user.primary_kitchen_id = @kitchen.id
+        current_user.save
       end
       redirect_to @kitchen, success: "Successfully created new kitchen."
     else
@@ -70,6 +72,12 @@ class KitchensController < ApplicationController
   private
     def require_authentication
       if not user_signed_in?
+        redirect_to root_path
+      end
+    end
+
+    def user_subscribed
+      if not current_user.kitchens.includes(Kitchen.find(params[:id]))
         redirect_to root_path
       end
     end

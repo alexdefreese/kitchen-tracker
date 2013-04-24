@@ -1,0 +1,8 @@
+%h1= @kitchen.name
+
+%ul.unstyled
+  - @kitchen.foods.each do |food|
+    %li
+      .name= food.name
+      .amount-left= food.left
+      .added-at= "#{time_ago_in_words(food.)}"

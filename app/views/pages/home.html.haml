@@ -2,9 +2,16 @@
   %h1 Kitchen Tracker
   
 - if !user_signed_in?
-  %h2 What is this?
-  .description This is a simple web application to keep track of groceries.
-  %h2 Sign in or Sign Up!
-  %span.buttons
-    = link_to "Sign In", 'users/sign_in', class: 'btn btn-large btn-primary'
-    = link_to 'Sign Up', 'users/sign_up', class: 'btn btn-large btn-info'
+  .hero-unit
+    %h2 What is this?
+    %p This is a simple web application to keep track of groceries.
+    %h2 Please Sign In or Sign Up!
+    %span.buttons
+      = link_to "Sign In", 'users/sign_in', class: 'btn btn-primary'
+      = link_to 'Sign Up', 'users/sign_up', class: 'btn btn-info'
+- else
+  .hero-unit
+    %h2 You don't have a primary kitchen! 
+    %span.buttons
+      = link_to "Create", new_kitchen_path, class: 'btn btn-primary'
+      = link_to 'Add', kitchens_path, class: 'btn btn-info'
