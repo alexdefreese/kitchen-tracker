@@ -7,7 +7,8 @@ FactoryGirl.define do
 
   factory :kitchen do
     name "Test Kitchen"
-    auth_code "test_authcode"
+    description "A kitchen to test"
+    auth_code "testauthcode"
   end
 
 end
