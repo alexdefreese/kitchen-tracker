@@ -1,21 +1,27 @@
 %header
   .navbar.navbar-inverse.navbar-fixed-top
     .navbar-inner
-      = link_to "Kitchen Tracker", root_path, class: "brand", id: "logo"
-      %nav
-        %ul.nav.pull-right
-          - if user_signed_in?
-            %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", "href" => '#'}
-                Kitchens
-                %b.caret
-              %ul.dropdown-menu{"role" => "menu", "aria-labelledby" => "dLabel"}
-                %li= link_to "Create Kitchen", new_kitchen_path
-                %li= link_to "Add Existing Kitchen", kitchens_path
-                %li.divider
-                - current_user.kitchens.each do |kit|
-                  %li= link_to kit.name, kit
-            %li= link_to "Sign Out", destroy_user_session_path, method: :delete
-          - else
-            %li= link_to "Sign Up", '/users/sign_up'
-            %li= link_to "Sign In", '/users/sign_in'
+      .container
+        %a{ "class" => "btn btn-navbar", "data-toggle"=>"collapse", "data-target"=>".nav-collapse" }
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to "Kitchen Tracker", root_path, class: "brand", id: "logo"
+        %nav
+          .nav-collapse.navbar-responsive-collapse.collapse
+            %ul.nav.pull-right
+              - if user_signed_in?
+                %li.dropdown
+                  %a.dropdown-toggle{"data-toggle" => "dropdown", "href" => '#'}
+                    Kitchens
+                    %b.caret
+                  %ul.dropdown-menu{"role" => "menu", "aria-labelledby" => "dLabel"}
+                    %li= link_to "Create Kitchen", new_kitchen_path
+                    %li= link_to "Add Existing Kitchen", kitchens_path
+                    %li.divider
+                    - current_user.kitchens.each do |kit|
+                      %li= link_to kit.name, kit
+                %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+              - else
+                %li= link_to "Sign Up", '/users/sign_up'
+                %li= link_to "Sign In", '/users/sign_in'

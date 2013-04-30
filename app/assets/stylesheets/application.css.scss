@@ -14,21 +14,10 @@
 
 
 @import "twitter/bootstrap";
+// This must go before the responsive import, otherwise it will spaz out.
+body {
+  padding-top: 60px;
+}
 @import "twitter/bootstrap/responsive";
 
 // Layout
-body {
-  padding-top: 30px;
-  // background-color: #aaa;
-  #content {
-    background-color: white;
-    width: 80%;
-    padding-left: 3em;
-    padding-right: 3em;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 100%
-  } 
-}
