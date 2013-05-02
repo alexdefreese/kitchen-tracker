@@ -6,9 +6,18 @@ class FoodsController < ApplicationController
   end
 
   def new
+    @kitchen = Kitchen.find(params[:kitchen_id])
+    @food = @kitchen.foods.build
   end
 
   def create
+    @kitchen = Kitchen.find(params[:kitchen_id])
+    @food = @kitchen.build(params[:food])
+    flash[:notice] = "Food Created"
+    respond_to do |type|
+      type.html { redirect_to @kitchen }
+      type.js
+    end
   end
 
   def edit

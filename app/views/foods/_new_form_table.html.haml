@@ -1,0 +1,10 @@
+%tr
+  - form_for [@kitchen, @food], html: {:class => "form-inline"}, remote: true do |f|
+    %td= f.text_field :name
+    %td= f.text_field :left
+    %td= f.text_field :added, value: Date.today, "data-behavior" => "datepicker"
+    %td= f.text_field :perishibility
+    %td= f.text_field :category
+    %td
+      .form-actions
+        = f.submit "Submit", class: 'btn btn-primary'

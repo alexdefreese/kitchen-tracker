@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require_tree .
 //= require twitter/bootstrap
+//= require bootstrap-datepicker
+
+$(function() {
+  $('[data-behaviour~=datepicker]').datepicker()
+});

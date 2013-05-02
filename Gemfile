@@ -44,6 +44,7 @@ gem 'bootstrap-sass-rails'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 gem 'haml'
+gem 'bootstrap-datepicker-rails'
 
 gem 'devise'
 

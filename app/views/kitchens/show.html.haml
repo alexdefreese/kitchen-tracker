@@ -1,6 +1,6 @@
 %h1= @kitchen.name
 
-.new-kitchen-btn= link_to "+Food", new_food_path, remote: true, class: "btn btn-success" 
+.new-kitchen-btn= link_to "+Food", new_kitchen_food_path(@kitchen), remote: true, class: "btn btn-success" 
 
 %table.table.table-striped
   %thead

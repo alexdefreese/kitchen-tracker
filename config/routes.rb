@@ -4,8 +4,10 @@ KitchenTracker::Application.routes.draw do
 
   get "pages/help"
 
-  resources :foods
-  resources :kitchens, only: [:new, :create, :edit, :update, :destroy, :index, :show]
+  resources :kitchens, only: [:new, :create, :edit, :update, :destroy, :index, :show] do
+    resources :foods
+  end
+  
   get "kitchens/subscribe_form/:id" => 'kitchens#subscribe_form'
   post "kitchens/subscribe" => 'kitchens#subscribe'
 
